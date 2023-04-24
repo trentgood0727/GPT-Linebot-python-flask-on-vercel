@@ -2,9 +2,9 @@ import os
 
 chat_language = os.getenv("INIT_LANGUAGE", default = "zh")
 
-MSG_LIST_LIMIT = int(os.getenv("MSG_LIST_LIMIT", default = 20))
+MSG_LIST_LIMIT = int(os.getenv("MSG_LIST_LIMIT", default = 10))
 LANGUAGE_TABLE = {
-  "zh": "哈囉！",
+  "zh": "請問",
   "en": "Hello!"
 }
 
@@ -23,3 +23,6 @@ class Prompt:
 
     def generate_prompt(self):
         return '\n'.join(self.msg_list)
+    
+    def clear_msg(self):
+        self.msg_list.clear()
