@@ -31,6 +31,10 @@ class ChatGPT:
     def get_response(self):
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
+	    temperature=self.temperature,
+	    frequency_penalty=self.frequency_penalty,
+	    presence_penalty=self.presence_penalty,
+	    max_tokens=self.max_tokens,
             messages=[
                 {"role": "system", "content": "系統訊息，目前無用"},
                 {"role": "assistant", "content": "此處填入機器人訊息"},
