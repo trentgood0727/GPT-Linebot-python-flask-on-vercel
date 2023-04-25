@@ -106,10 +106,10 @@ def handle_message(event):
         return
 
     if working_status and event.message.text[0:5] == "BB-87":
-        human_msg = event.message.text[5:-1]
+        human_msg = event.message.text[5:-1] + "\n"
         chatgpt.add_msg(human_msg)
         #reply_msg = chatgpt.get_response().replace("AI:", "", 1)
-        reply_msg = chatgpt.get_response()
+        reply_msg = chatgpt.get_response() + "\n"
         chatgpt.add_msg(reply_msg)
         line_bot_api.reply_message(
             event.reply_token,
