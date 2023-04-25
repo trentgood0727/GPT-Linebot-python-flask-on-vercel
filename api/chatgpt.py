@@ -1,5 +1,5 @@
-#from api.prompt import Prompt
-from prompt import Prompt
+from api.prompt import Prompt
+#from prompt import Prompt
 
 import os
 import openai
