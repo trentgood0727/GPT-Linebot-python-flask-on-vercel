@@ -6,7 +6,6 @@ import openai
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-
 class ChatGPT:
     def __init__(self):
         self.prompt = Prompt()
@@ -43,6 +42,19 @@ class ChatGPT:
             ]
         )
         return response['choices'][0]['message']['content'].strip()
+    
+    def translate_openai(self, text, language):
+        prompt = f"""'{text}'
+        Help me to translate this sentence to {language}, only target language, no need original language."""
+
+        # Translate the chunk using the GPT model
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo", # engine = "deployment_name".
+            messages= [{"role":"user", "content":prompt}],
+            temperature = 0.5
+        )
+        translated_subtitles = response['choices'][0]['message']['content']
+        return translated_subtitles
     
     def add_msg(self, text):
         self.prompt.add_msg(text)
